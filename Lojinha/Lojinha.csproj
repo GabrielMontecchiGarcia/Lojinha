@@ -155,6 +155,7 @@
     <Compile Include="DAL\ClientesDAL.cs" />
     <Compile Include="DAL\Dados.cs" />
     <Compile Include="DAL\ProdutoDAL.cs" />
+    <Compile Include="DAL\VendasDAL.cs" />
     <Compile Include="Modelos\ClienteInformation.cs" />
     <Compile Include="Modelos\ProdutosInformation.cs" />
     <Compile Include="Modelos\VendasInformation.cs" />

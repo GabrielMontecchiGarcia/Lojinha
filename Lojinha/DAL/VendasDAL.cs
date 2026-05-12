@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Lojinha.Modelos;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Lojinha.DAL
 {
-    public class ProdutoDAL
+    public class VendasDAL
     {
-        public void incluir(ProdutosInformation produtos)
+        public void incluir(VendasInformation vendas)
         {
             //Conexão com o banco de dados
             SqlConnection cn = new SqlConnection(Dados.StringConexao);
@@ -20,23 +20,31 @@ namespace Lojinha.DAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = " ";
+                cmd.CommandText = "insere_venda";
                 //Parâmetros de SP
                 SqlParameter pcodigo = new SqlParameter("@codigo", SqlDbType.Int);
                 pcodigo.Direction = ParameterDirection.Output;
                 cmd.Parameters.Add(pcodigo);
 
-                SqlParameter pdescricao = new SqlParameter("@estoque", SqlDbType.Int);
-                pdescricao.Value = produtos.Estoque;
-                cmd.Parameters.Add(pdescricao);
+                SqlParameter pdata = new SqlParameter("@data", SqlDbType.DateTime);
+                pdata.Value = vendas.Data;
+                cmd.Parameters.Add(pdata);
 
-                SqlParameter ppreco = new SqlParameter("@preco", SqlDbType.Decimal);
-                ppreco.Value = produtos.Preco;
-                cmd.Parameters.Add(ppreco);
+                SqlParameter pquantidade = new SqlParameter("@quantidade", SqlDbType.Int);
+                pquantidade.Value = vendas.Quantidade;
+                cmd.Parameters.Add(pquantidade);
+
+                SqlParameter pfaturado = new SqlParameter("@faturado", SqlDbType.Bit);
+                pfaturado.Value = vendas.Faturado;
+                cmd.Parameters.Add(pfaturado);
+
+                SqlParameter pcodigoProduto = new SqlParameter("@codigoProduto", SqlDbType.Int);
+                pcodigoProduto.Value = vendas.CodigoProduto;
+                cmd.Parameters.Add(pcodigoProduto);
                 cn.Open();
                 cmd.ExecuteNonQuery();
 
-                produtos.Codigo = (Int32)cmd.Parameters["@codigo"].Value;
+                vendas.Codigo = (Int32)cmd.Parameters["@codigo"].Value;
             }
             catch (Exception ex)
             {
@@ -51,7 +59,7 @@ namespace Lojinha.DAL
                 cn.Close();
             }
         }
-        public void alterar(ProdutosInformation produtos)
+        public void alterar(VendasInformation vendas)
         {
             //Conexão com o banco de dados
             SqlConnection cn = new SqlConnection(Dados.StringConexao);
@@ -60,20 +68,28 @@ namespace Lojinha.DAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "altera_produto";
+                cmd.CommandText = "altera_venda";
                 //Parâmetros de SP
-
                 SqlParameter pcodigo = new SqlParameter("@codigo", SqlDbType.Int);
-                pcodigo.Value = produtos.Codigo;
+                pcodigo.Value = vendas.Codigo;
                 cmd.Parameters.Add(pcodigo);
 
-                SqlParameter pdescricao = new SqlParameter("@estoque", SqlDbType.Int);
-                pdescricao.Value = produtos.Estoque;
-                cmd.Parameters.Add(pdescricao);
+                SqlParameter pdata = new SqlParameter("@data", SqlDbType.DateTime);
+                pdata.Value = vendas.Data;
+                cmd.Parameters.Add(pdata);
 
-                SqlParameter ppreco = new SqlParameter("@preco", SqlDbType.Decimal);
-                ppreco.Value = produtos.Preco;
-                cmd.Parameters.Add(ppreco);
+                SqlParameter pquantidade = new SqlParameter("@quantidade", SqlDbType.Int);
+                pquantidade.Value = vendas.Quantidade;
+                cmd.Parameters.Add(pquantidade);
+
+                SqlParameter pfaturado = new SqlParameter("@faturado", SqlDbType.Bit);
+                pfaturado.Value = vendas.Faturado;
+                cmd.Parameters.Add(pfaturado);
+
+                SqlParameter pcodigoProduto = new SqlParameter("@codigoProduto", SqlDbType.Int);
+                pcodigoProduto.Value = vendas.CodigoProduto;
+                cmd.Parameters.Add(pcodigoProduto);
+
                 cn.Open();
                 cmd.ExecuteNonQuery();
             }
@@ -96,10 +112,11 @@ namespace Lojinha.DAL
             SqlConnection cn = new SqlConnection(Dados.StringConexao);
             try
             {
+                SqlConnection cn = new SqlConnection(Dados.StringConexao);
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "exclui_produto";
+                cmd.CommandText = "exclui_venda";
                 //Parâmetros de SP
                 SqlParameter pcodigo = new SqlParameter("@codigo", SqlDbType.Int);
                 pcodigo.Value = codigo;
@@ -107,50 +124,11 @@ namespace Lojinha.DAL
                 cn.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch 
             {
-                throw new Exception("Erro ao abrir conexão com o banco de dados. " + ex.Message);
-            }
-            catch
-            {
-                throw new Exception("Errro descohecido ao acessar banco de dados");
-            }
-            finally
-            {
-                cn.Close();
+                
             }
         }
-        public DataTable listagem (string filtro)
-        {
-            //Conexão com o banco de dados
-            SqlConnection cn = new SqlConnection(Dados.StringConexao);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = cn;
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "seleciona_produtos";
-                //Parâmetros de SP
-                SqlParameter pfiltro = new SqlParameter("@filtro", SqlDbType.VarChar, 100);
-                pfiltro.Value = filtro;
-                cmd.Parameters.Add(pfiltro);
-                cn.Open();
-                DataTable tabela = new DataTable();
-                tabela.Load(cmd.ExecuteReader());
-                return tabela;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Erro ao abrir conexão com o banco de dados. " + ex.Message);
-            }
-            catch
-            {
-                throw new Exception("Errro descohecido ao acessar banco de dados");
-            }
-            finally
-            {
-                cn.Close();
-            }
-        }
+
     }
 }
