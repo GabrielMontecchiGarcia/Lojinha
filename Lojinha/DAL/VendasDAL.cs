@@ -112,7 +112,6 @@ namespace Lojinha.DAL
             SqlConnection cn = new SqlConnection(Dados.StringConexao);
             try
             {
-                SqlConnection cn = new SqlConnection(Dados.StringConexao);
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -124,11 +123,53 @@ namespace Lojinha.DAL
                 cn.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch 
+            catch (Exception ex)
             {
-                
+                throw new Exception("Erro ao abrir conexão com o banco de dados. " + ex.Message);
+            }
+            catch
+            {
+                throw new Exception("Errro descohecido ao acessar banco de dados");
+
+            }
+            finally
+            {
+                cn.Close();
             }
         }
-
+        public DataTable listagem(string filtro)
+        {
+            DataTable tabela = new DataTable();
+            //Conexão com o banco de dados
+            SqlConnection cn = new SqlConnection(Dados.StringConexao);
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "seleciona_vendas";
+                //Parâmetros de SP
+                SqlParameter pfiltro = new SqlParameter("@filtro", SqlDbType.VarChar, 100);
+                pfiltro.Value = filtro;
+                cmd.Parameters.Add(pfiltro);
+                cn.Open();
+                DataTable tabela = new DataTable();
+                tabela.Load(cmd.ExecuteReader());
+                return tabela;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao abrir conexão com o banco de dados. " + ex.Message);
+            }
+            catch
+            {
+                throw new Exception("Errro descohecido ao acessar banco de dados");
+            }
+            finally
+            {
+                cn.Close();
+            }
+            return tabela;
+        }
     }
 }
