@@ -15,7 +15,5 @@ namespace Lojinha.DAL
                 return "server = Data Source=desktop-omtidsq;Initial Catalog=dblojinha;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
             }
         }
-
-
     }
 }
