@@ -12,7 +12,7 @@ namespace Lojinha.DAL
 {
     public class ClientesDAL
     {
-        public void incluir(ClienteInformation cliente)
+        public void Incluir(ClienteInformation cliente)
         {
             //Conexão com o banco de dados
             SqlConnection cn = new SqlConnection(Dados.StringConexao);
@@ -58,7 +58,7 @@ namespace Lojinha.DAL
             }
         }
         //Alterar clientes
-        public void alterar(ClienteInformation cliente)
+        public void Alterar(ClienteInformation cliente)
         {
             //Conexão com o banco de dados
             SqlConnection cn = new SqlConnection(Dados.StringConexao);
@@ -101,7 +101,7 @@ namespace Lojinha.DAL
                 cn.Close();
             }
         }
-        public void excluir(int codigo)
+        public void Excluir(int codigo)
         {
             //Conexão com o banco de dados
             SqlConnection cn = new SqlConnection(Dados.StringConexao);

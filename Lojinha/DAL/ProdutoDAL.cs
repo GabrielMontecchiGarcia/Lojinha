@@ -11,7 +11,7 @@ namespace Lojinha.DAL
 {
     public class ProdutoDAL
     {
-        public void incluir(ProdutosInformation produtos)
+        public void Incluir(ProdutosInformation produtos)
         {
             //Conexão com o banco de dados
             SqlConnection cn = new SqlConnection(Dados.StringConexao);
@@ -51,7 +51,7 @@ namespace Lojinha.DAL
                 cn.Close();
             }
         }
-        public void alterar(ProdutosInformation produtos)
+        public void Alterar(ProdutosInformation produtos)
         {
             //Conexão com o banco de dados
             SqlConnection cn = new SqlConnection(Dados.StringConexao);
@@ -90,7 +90,7 @@ namespace Lojinha.DAL
                 cn.Close();
             }
         }
-        public void excluir(int codigo)
+        public void Excluir(int codigo)
         {
             //Conexão com o banco de dados
             SqlConnection cn = new SqlConnection(Dados.StringConexao);
@@ -120,7 +120,7 @@ namespace Lojinha.DAL
                 cn.Close();
             }
         }
-        public DataTable listagem (string filtro)
+        public DataTable Listagem (string filtro)
         {
             //Conexão com o banco de dados
             SqlConnection cn = new SqlConnection(Dados.StringConexao);

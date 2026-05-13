@@ -11,7 +11,7 @@ namespace Lojinha.DAL
 {
     public class VendasDAL
     {
-        public void incluir(VendasInformation vendas)
+        public void Incluir(VendasInformation vendas)
         {
             //Conexão com o banco de dados
             SqlConnection cn = new SqlConnection(Dados.StringConexao);
@@ -59,7 +59,7 @@ namespace Lojinha.DAL
                 cn.Close();
             }
         }
-        public void alterar(VendasInformation vendas)
+        public void Alterar(VendasInformation vendas)
         {
             //Conexão com o banco de dados
             SqlConnection cn = new SqlConnection(Dados.StringConexao);
@@ -106,7 +106,7 @@ namespace Lojinha.DAL
                 cn.Close();
             }
         }
-        public void excluir(int codigo)
+        public void Excluir(int codigo)
         {
             //Conexão com o banco de dados
             SqlConnection cn = new SqlConnection(Dados.StringConexao);
@@ -136,40 +136,6 @@ namespace Lojinha.DAL
             {
                 cn.Close();
             }
-        }
-        public DataTable listagem(string filtro)
-        {
-            DataTable tabela = new DataTable();
-            //Conexão com o banco de dados
-            SqlConnection cn = new SqlConnection(Dados.StringConexao);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = cn;
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "seleciona_vendas";
-                //Parâmetros de SP
-                SqlParameter pfiltro = new SqlParameter("@filtro", SqlDbType.VarChar, 100);
-                pfiltro.Value = filtro;
-                cmd.Parameters.Add(pfiltro);
-                cn.Open();
-                DataTable tabela = new DataTable();
-                tabela.Load(cmd.ExecuteReader());
-                return tabela;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Erro ao abrir conexão com o banco de dados. " + ex.Message);
-            }
-            catch
-            {
-                throw new Exception("Errro descohecido ao acessar banco de dados");
-            }
-            finally
-            {
-                cn.Close();
-            }
-            
         }
     }
 }
