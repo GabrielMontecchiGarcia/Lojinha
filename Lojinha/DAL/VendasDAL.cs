@@ -169,7 +169,7 @@ namespace Lojinha.DAL
             {
                 cn.Close();
             }
-            return tabela;
+            
         }
     }
 }
