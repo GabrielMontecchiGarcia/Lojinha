@@ -12,7 +12,7 @@ namespace Lojinha.DAL
         {
             get
             {
-                return "server = Data Source=desktop-omtidsq;Initial Catalog=dblojinha;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+                return "Data Source=desktop-omtidsq;Initial Catalog=dblojinha;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
             }
         }
     }

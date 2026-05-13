@@ -42,7 +42,7 @@ namespace Lojinha.DAL
                 cn.Open();
                 cmd.ExecuteNonQuery();
 
-                cliente.Codigo = (Int32)cmd.Parameters["@codio"].Value;
+                cliente.Codigo = (Int32)cmd.Parameters["@codigo"].Value;
             }
             catch (Exception ex)
             {

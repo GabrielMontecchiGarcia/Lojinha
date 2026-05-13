@@ -11,7 +11,7 @@ namespace Lojinha.BLL
 {
     public class ClientesBLL
     {
-        public void incluir(ClienteInformation cliente)
+        public void Incluir(ClienteInformation cliente)
         {
             //o nome do cliente é obrigatório
             if (cliente.Nome.Trim().Length == 0)
@@ -24,7 +24,7 @@ namespace Lojinha.BLL
             ClientesDAL obj = new ClientesDAL();
             obj.Incluir(cliente);
         }
-        public void alterar(ClienteInformation cliente)
+        public void Alterar(ClienteInformation cliente)
         {
             if (cliente.Nome.Trim().Length ==0)
             {
@@ -36,7 +36,7 @@ namespace Lojinha.BLL
             ClientesDAL obj = new ClientesDAL();
             obj.Alterar(cliente);
         }
-        public void excluir(int codigo)
+        public void Excluir(int codigo)
         {
             if (codigo < 1)
             {
