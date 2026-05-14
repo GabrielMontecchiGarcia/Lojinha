@@ -81,7 +81,6 @@
             // 
             // codigoTextbox
             // 
-            this.codigoTextbox.Enabled = false;
             this.codigoTextbox.Location = new System.Drawing.Point(75, 31);
             this.codigoTextbox.Name = "codigoTextbox";
             this.codigoTextbox.Size = new System.Drawing.Size(70, 20);
@@ -136,6 +135,7 @@
             this.excluirButton.TabIndex = 10;
             this.excluirButton.Text = "Excluir";
             this.excluirButton.UseVisualStyleBackColor = true;
+            this.excluirButton.Click += new System.EventHandler(this.excluirButton_Click);
             // 
             // listagemButton
             // 
@@ -174,6 +174,7 @@
             this.Controls.Add(this.nomeLabel);
             this.Controls.Add(this.codigoLabel);
             this.Name = "ClientesForms";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ClientesForms";
             this.ResumeLayout(false);
             this.PerformLayout();
