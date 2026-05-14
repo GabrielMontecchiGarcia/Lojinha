@@ -31,5 +31,10 @@ namespace Lojinha.Formularios
             MessageBox.Show("O cliente foi incluido com sucesso");
             codigoTextbox.Text = Convert.ToString(cliente.Codigo);
         }
+
+        private void alterarButton_Click(object sender, EventArgs e)
+        {
+            ClienteInformation
+        }
     }
 }

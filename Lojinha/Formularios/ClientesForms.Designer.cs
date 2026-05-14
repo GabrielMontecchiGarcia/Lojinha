@@ -126,6 +126,7 @@
             this.alterarButton.TabIndex = 9;
             this.alterarButton.Text = "Alterar";
             this.alterarButton.UseVisualStyleBackColor = true;
+            this.alterarButton.Click += new System.EventHandler(this.alterarButton_Click);
             // 
             // excluirButton
             // 
