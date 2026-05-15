@@ -153,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\ClientesBLL.cs" />
+    <Compile Include="BLL\ProdutosBLL.cs" />
     <Compile Include="DAL\ClientesDAL.cs" />
     <Compile Include="DAL\Dados.cs" />
     <Compile Include="DAL\ProdutoDAL.cs" />
@@ -163,6 +164,24 @@
     <Compile Include="Formularios\ClientesForms.Designer.cs">
       <DependentUpon>ClientesForms.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\PrincipalForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\PrincipalForms.Designer.cs">
+      <DependentUpon>PrincipalForms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ProdutosForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ProdutosForms.Designer.cs">
+      <DependentUpon>ProdutosForms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\VendasForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\VendasForms.Designer.cs">
+      <DependentUpon>VendasForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\ClienteInformation.cs" />
     <Compile Include="Modelos\ProdutosInformation.cs" />
     <Compile Include="Modelos\VendasInformation.cs" />
@@ -170,6 +189,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Formularios\ClientesForms.resx">
       <DependentUpon>ClientesForms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\PrincipalForms.resx">
+      <DependentUpon>PrincipalForms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ProdutosForms.resx">
+      <DependentUpon>ProdutosForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

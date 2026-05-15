@@ -79,5 +79,10 @@ namespace Lojinha.Formularios
                     MessageBox.Show("Erro: " + ex.Message);
                 }
         }
+
+        private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
