@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Lojinha.Modelos;
+using Lojinha.BLL;
 
 namespace Lojinha.DAL
 {
@@ -20,19 +21,24 @@ namespace Lojinha.DAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = " ";
+                cmd.CommandText = "insere_produto";
                 //Parâmetros de SP
                 SqlParameter pcodigo = new SqlParameter("@codigo", SqlDbType.Int);
                 pcodigo.Direction = ParameterDirection.Output;
                 cmd.Parameters.Add(pcodigo);
 
-                SqlParameter pdescricao = new SqlParameter("@estoque", SqlDbType.Int);
-                pdescricao.Value = produtos.Estoque;
-                cmd.Parameters.Add(pdescricao);
+                SqlParameter pnome = new SqlParameter("@nome", SqlDbType.VarChar);
+                pnome.Value = produtos.Nome;
+                cmd.Parameters.Add(pnome);
 
                 SqlParameter ppreco = new SqlParameter("@preco", SqlDbType.Decimal);
                 ppreco.Value = produtos.Preco;
                 cmd.Parameters.Add(ppreco);
+
+                SqlParameter pestoque = new SqlParameter("@estoque", SqlDbType.Int);
+                pestoque.Value = produtos.Estoque;
+                cmd.Parameters.Add(pestoque);
+                
                 cn.Open();
                 cmd.ExecuteNonQuery();
 
@@ -61,15 +67,18 @@ namespace Lojinha.DAL
                 cmd.Connection = cn;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "altera_produto";
-                //Parâmetros de SP
-
+                //Parâmetros de SP               
                 SqlParameter pcodigo = new SqlParameter("@codigo", SqlDbType.Int);
                 pcodigo.Value = produtos.Codigo;
                 cmd.Parameters.Add(pcodigo);
 
-                SqlParameter pdescricao = new SqlParameter("@estoque", SqlDbType.Int);
-                pdescricao.Value = produtos.Estoque;
-                cmd.Parameters.Add(pdescricao);
+                SqlParameter pnome = new SqlParameter("@nome", SqlDbType.VarChar, 100);
+                pnome.Value = produtos.Nome;
+                cmd.Parameters.Add(pnome);
+
+                SqlParameter pestoque = new SqlParameter("@estoque", SqlDbType.Int);
+                pestoque.Value = produtos.Estoque;
+                cmd.Parameters.Add(pestoque);
 
                 SqlParameter ppreco = new SqlParameter("@preco", SqlDbType.Decimal);
                 ppreco.Value = produtos.Preco;

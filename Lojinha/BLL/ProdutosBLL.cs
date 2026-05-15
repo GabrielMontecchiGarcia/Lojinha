@@ -12,31 +12,23 @@ namespace Lojinha.BLL
 {
     public class ProdutosBLL
     {
-        public void Incluir(ProdutosInformation produtos)
+        public void Incluir(ProdutosInformation produto)
         {
-            if(produtos.Nome.Trim().Length == 0)
+            if(produto.Nome.Trim().Length == 0)
             {
-                throw new Exception("O Nome do Produto é Obrigátorio");
+                throw new Exception("O Nome do Produto é obrigatório");
             }
-            if(produtos.Preco == 0)
-            {
-                throw new Exception("O preço do produto é obrigátorio");
-            }
-            if(produtos.Estoque == 0)
-            {
-                throw new Exception("O estoque do produto é obrigátorio");
-            }
-            ProdutosBLL obj = new ProdutosBLL();
-            obj.Incluir(produtos);
+            ProdutoDAL obj = new ProdutoDAL();
+            obj.Incluir(produto);
         }
-        public void Alterar (ProdutosInformation produtos)
+        public void Alterar (ProdutosInformation produto)
         {
-            if(produtos.Nome.Trim().Length == 0)
+            if(produto.Nome.Trim().Length == 0)
             {
                 throw new Exception("O nome do produto é obrigátorio");
             }
-            ProdutosBLL obj = new ProdutosBLL();
-            obj.Alterar(produtos);
+            ProdutoDAL obj = new ProdutoDAL();
+            obj.Alterar(produto);
         }
         public void Excluir(int codigo)
         {
@@ -44,12 +36,12 @@ namespace Lojinha.BLL
             {
                 throw new Exception("Selecione um produto válido antes de excluir");
             }
-            ProdutosBLL obj = new ProdutosBLL();
+            ProdutoDAL obj = new ProdutoDAL();
             obj.Excluir(codigo);
         }
         public DataTable Listagem(string filtro)
         {
-            ProdutosBLL obj = new ProdutosBLL();
+            ProdutoDAL obj = new ProdutoDAL();
             return obj.Listagem(filtro);
         }
     }

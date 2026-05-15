@@ -36,7 +36,7 @@
             this.EstoqueProdutoLabel = new System.Windows.Forms.Label();
             this.CodigoProdutoTextBox = new System.Windows.Forms.TextBox();
             this.NomeProdutoTextBox = new System.Windows.Forms.TextBox();
-            this.PrecoProdutoTextBox = new System.Windows.Forms.TextBox();
+            this.TxtPrecoProduto = new System.Windows.Forms.TextBox();
             this.EstoqueProdutoTextBox = new System.Windows.Forms.TextBox();
             this.IncluirProdutoButton = new System.Windows.Forms.Button();
             this.AlterarProdutoButton = new System.Windows.Forms.Button();
@@ -61,6 +61,7 @@
             this.voltarToolStripMenuItem.Name = "voltarToolStripMenuItem";
             this.voltarToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.voltarToolStripMenuItem.Text = "&Voltar";
+            this.voltarToolStripMenuItem.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
             // 
             // ProdutoCodigoLabel
             // 
@@ -112,12 +113,12 @@
             this.NomeProdutoTextBox.Size = new System.Drawing.Size(100, 20);
             this.NomeProdutoTextBox.TabIndex = 6;
             // 
-            // PrecoProdutoTextBox
+            // TxtPrecoProduto
             // 
-            this.PrecoProdutoTextBox.Location = new System.Drawing.Point(77, 99);
-            this.PrecoProdutoTextBox.Name = "PrecoProdutoTextBox";
-            this.PrecoProdutoTextBox.Size = new System.Drawing.Size(100, 20);
-            this.PrecoProdutoTextBox.TabIndex = 7;
+            this.TxtPrecoProduto.Location = new System.Drawing.Point(77, 99);
+            this.TxtPrecoProduto.Name = "TxtPrecoProduto";
+            this.TxtPrecoProduto.Size = new System.Drawing.Size(100, 20);
+            this.TxtPrecoProduto.TabIndex = 7;
             // 
             // EstoqueProdutoTextBox
             // 
@@ -144,6 +145,7 @@
             this.AlterarProdutoButton.TabIndex = 10;
             this.AlterarProdutoButton.Text = "Alterar";
             this.AlterarProdutoButton.UseVisualStyleBackColor = true;
+            this.AlterarProdutoButton.Click += new System.EventHandler(this.AlterarProdutoButton_Click);
             // 
             // ListagemProdutoButton
             // 
@@ -162,6 +164,7 @@
             this.ExcluirProdutoButton.TabIndex = 11;
             this.ExcluirProdutoButton.Text = "Exlcuir";
             this.ExcluirProdutoButton.UseVisualStyleBackColor = true;
+            this.ExcluirProdutoButton.Click += new System.EventHandler(this.ExcluirProdutoButton_Click);
             // 
             // LimparProdutoButton
             // 
@@ -183,7 +186,7 @@
             this.Controls.Add(this.AlterarProdutoButton);
             this.Controls.Add(this.IncluirProdutoButton);
             this.Controls.Add(this.EstoqueProdutoTextBox);
-            this.Controls.Add(this.PrecoProdutoTextBox);
+            this.Controls.Add(this.TxtPrecoProduto);
             this.Controls.Add(this.NomeProdutoTextBox);
             this.Controls.Add(this.CodigoProdutoTextBox);
             this.Controls.Add(this.EstoqueProdutoLabel);
@@ -211,7 +214,7 @@
         private System.Windows.Forms.Label EstoqueProdutoLabel;
         private System.Windows.Forms.TextBox CodigoProdutoTextBox;
         private System.Windows.Forms.TextBox NomeProdutoTextBox;
-        private System.Windows.Forms.TextBox PrecoProdutoTextBox;
+        private System.Windows.Forms.TextBox TxtPrecoProduto;
         private System.Windows.Forms.TextBox EstoqueProdutoTextBox;
         private System.Windows.Forms.Button IncluirProdutoButton;
         private System.Windows.Forms.Button AlterarProdutoButton;
