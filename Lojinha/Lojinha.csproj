@@ -158,6 +158,12 @@
     <Compile Include="DAL\Dados.cs" />
     <Compile Include="DAL\ProdutoDAL.cs" />
     <Compile Include="DAL\VendasDAL.cs" />
+    <Compile Include="Formularios\BuscaClientesForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\BuscaClientesForms.Designer.cs">
+      <DependentUpon>BuscaClientesForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\ClientesForms.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     <Compile Include="Modelos\VendasInformation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\BuscaClientesForms.resx">
+      <DependentUpon>BuscaClientesForms.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\ClientesForms.resx">
       <DependentUpon>ClientesForms.cs</DependentUpon>
     </EmbeddedResource>

@@ -39,5 +39,11 @@ namespace Lojinha.Formularios
         {
             Application.Exit();
         }
+
+        private void buscaClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BuscaClientesForms buscar = new BuscaClientesForms();
+            buscar.Show();
+        }
     }
 }

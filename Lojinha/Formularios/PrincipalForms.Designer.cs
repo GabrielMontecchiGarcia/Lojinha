@@ -34,6 +34,7 @@
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buscaClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +54,7 @@
             this.clientesToolStripMenuItem,
             this.produtosToolStripMenuItem,
             this.vendasToolStripMenuItem,
+            this.buscaClientesToolStripMenuItem,
             this.sairToolStripMenuItem});
             this.formulariosToolStripMenuItem.Name = "formulariosToolStripMenuItem";
             this.formulariosToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
@@ -86,6 +88,13 @@
             this.sairToolStripMenuItem.Text = "&Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
+            // buscaClientesToolStripMenuItem
+            // 
+            this.buscaClientesToolStripMenuItem.Name = "buscaClientesToolStripMenuItem";
+            this.buscaClientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.buscaClientesToolStripMenuItem.Text = "&Busca Clientes";
+            this.buscaClientesToolStripMenuItem.Click += new System.EventHandler(this.buscaClientesToolStripMenuItem_Click);
+            // 
             // PrincipalForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -110,5 +119,6 @@
         private System.Windows.Forms.ToolStripMenuItem produtosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vendasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem buscaClientesToolStripMenuItem;
     }
 }

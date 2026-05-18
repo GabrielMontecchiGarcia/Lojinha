@@ -141,27 +141,28 @@ namespace Lojinha.DAL
                 cmd.Connection = cn;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "seleciona_cliente";
-                //Parâmetros de SP
+                //Parametros da Stored Procedure
                 SqlParameter pfiltro = new SqlParameter("@filtro", SqlDbType.VarChar, 100);
                 pfiltro.Value = filtro;
                 cmd.Parameters.Add(pfiltro);
-                cn.Open();
                 DataTable tabela = new DataTable();
-                tabela.Load(cmd.ExecuteReader());
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(tabela);
                 return tabela;
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                throw new Exception("Erro ao abrir conexão com o banco de dados. " + ex.Message);
+                throw new Exception("Erro ao acessar o banco de dados." + ex.Message.ToString());
             }
             catch
             {
-                throw new Exception("Errro descohecido ao acessar banco de dados");
+                throw new Exception("Erro desconhecido ao acessar o banco de dados.");
             }
             finally
             {
                 cn.Close();
             }
+
         }
     }
 }
