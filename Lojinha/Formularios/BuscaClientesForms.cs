@@ -20,24 +20,22 @@ namespace Lojinha.Formularios
         }
         public void AtualizarGrid()
         {
-            //Comunicação com a camada BLL
-            ClientesBLL obj = new ClientesBLL();
+            var obj = new ClientesBLL();
             ClientesdataGridView.DataSource = obj.Listagem(filtroTextBox.Text);
 
-            //atualiza os objetos TextBox
-            try
+            // If there are rows, make the first cell the current cell so CurrentRow is not null
+            if (ClientesdataGridView.Rows.Count > 0)
             {
-                codigoTextBox.Text = ClientesdataGridView[0, ClientesdataGridView.CurrentRow.Index].Value.ToString();
-                nomeTextBox.Text = ClientesdataGridView[1, ClientesdataGridView.CurrentRow.Index].Value.ToString();
-                emailTextBox.Text = ClientesdataGridView[2, ClientesdataGridView.CurrentRow.Index].Value.ToString();
-                telefoneTextBox.Text = ClientesdataGridView[3, ClientesdataGridView.CurrentRow.Index].Value.ToString();
+                ClientesdataGridView.CurrentCell = ClientesdataGridView[0, 0];
+                var row = ClientesdataGridView.CurrentRow;
+                codigoTextBox.Text = Convert.ToString(row.Cells[0].Value ?? "");
+                nomeTextBox.Text = Convert.ToString(row.Cells[1].Value ?? "");
+                emailTextBox.Text = Convert.ToString(row.Cells[2].Value ?? "");
+                telefoneTextBox.Text = Convert.ToString(row.Cells[3].Value ?? "");
             }
-            catch (Exception)
+            else
             {
-                codigoTextBox.Text = "";
-                nomeTextBox.Text = "";
-                emailTextBox.Text = "";
-                telefoneTextBox.Text = "";
+                codigoTextBox.Text = nomeTextBox.Text = emailTextBox.Text = telefoneTextBox.Text = "";
             }
 
         }
@@ -58,7 +56,6 @@ namespace Lojinha.Formularios
             //atualiza os abjetos textbox
             try
             {
-
                 codigoTextBox.Text = ClientesdataGridView[0, ClientesdataGridView.CurrentRow.Index].Value.ToString();
                 nomeTextBox.Text = ClientesdataGridView[1, ClientesdataGridView.CurrentRow.Index].Value.ToString();
                 emailTextBox.Text = ClientesdataGridView[2, ClientesdataGridView.CurrentRow.Index].Value.ToString();
